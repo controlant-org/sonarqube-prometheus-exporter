@@ -135,7 +135,18 @@ class Metric:
 
 def get_all_projects_with_metrics():
     projects = []
-    metrics = [Metric(key="security_rating", domain="Security", description="security_rating"), Metric(key="reliability_rating", domain="Reliability", description="reliability_rating")]
+
+    sr = Metric()
+    sr.key="security_rating"
+    sr.domain="Security"
+    sr.description="security_rating"
+
+    rr = Metric()
+    rr.key="reliability_rating"
+    rr.domain="Reliability"
+    rr.description="reliability_rating"
+
+    metrics = [sr, rr]
 
     client = SonarExporter(CONF.sonar_user, CONF.sonar_password)
     all_projects = client.get_all_projects()
